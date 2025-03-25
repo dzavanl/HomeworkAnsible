@@ -1,0 +1,30 @@
+---
+- hosts: webservers # specify servers
+  become: yes #use sudo privileges
+  tasks:
+    - name: Update package manager
+      apt:
+        update_cache: yes
+    - name: Install LAMP stack #Here I am not sure if use name or pkg to install multiple packages
+      apt:
+        pkg:
+          - apache2
+          - php
+          - libapache2-mod-php
+          - mariadb-server
+        state: latest
+    - name: Create PHP info page 
+     - copy:
+       content: | 
+         <?php
+          echo "Hello from " . gethostname() . "!";
+          ?>
+        dest: /var/www/html/index.php
+    - name: Start apache,php and mariadb
+     service: 
+      name: 
+       - apache2
+       - php
+       - mariadb
+      state: restated
+      enable: yes
