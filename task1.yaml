@@ -24,7 +24,6 @@
      service: 
       name: 
        - apache2
-       - php
        - mariadb
-      state: restated
+      state: restarted
       enable: yes
