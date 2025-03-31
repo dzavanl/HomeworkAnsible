@@ -73,7 +73,7 @@
       user: 
         name: "{{ item.User }}"
         state: "disable"
-        when: item.Pub_key | lenght == 0
+        when: item.Pub_key | length == 0
       loop: "{{ user_list.list }}" 
 
     - name: Disable password login for all users
