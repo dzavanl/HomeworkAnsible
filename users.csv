@@ -1,4 +1,4 @@
-User,Comment,Owner-Team,Functional,Pub-key,
+User,Comment,Owner_Team,Functional,Pub_key,
 dbuser1,"Database user 1",DB01,1,,
 dbuser2,"Database user 1",DB01,1,,
 jamesbrown,"ADMINS/UNIX/ID111",ADM,0,"ssh-rsa 
