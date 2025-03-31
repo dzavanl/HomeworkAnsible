@@ -14,16 +14,17 @@
           - mariadb-server
         state: latest
     - name: Create PHP info page 
-     - copy:
+      copy:
        content: | 
          <?php
-          echo "Hello from " . gethostname() . "!";
+         echo "Hello from " . gethostname() . "!";
           ?>
-        dest: /var/www/html/index.php
+       dest: /var/www/html/index.php
     - name: Start apache,php and mariadb
-     service: 
-      name: 
-       - apache2
-       - mariadb
-      state: restarted
-      enable: yes
+       service: 
+        name: {{ item }}
+        state: restarted
+        enabled: yes
+       with_item: 
+         - apache2
+         - mariadb
