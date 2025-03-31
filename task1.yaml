@@ -60,3 +60,32 @@
         dest: "/home/{{ item.User }}/.ssh/authorized_keys"
       when: item.Pub_key | length > 0
       loop: "{{ user_list.list }}"
+
+    - name: Ensure generic admin user exists if not in CSV   
+      user:
+        name: admin
+        password: M0nk3yJ0b$Ev3ryday | password_hash('sha512')
+        group: sudo
+        append: true
+      when: admin not in user_list[0]
+
+    - name: Lock accounts without RSA keys
+      user: 
+        name: "{{ item.User }}"
+        state: "disable"
+        when: item.Pub_key | lenght == 0
+      loop: "{{ user_list.list }}" 
+
+    - name: Disable password login for all users
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: "^PasswordAuthentication"
+        line: "PasswordAuthentication no"
+      notify: Restart SSH
+    
+    handlers:
+    - name: Restart SSH
+      service:
+        name: sshd
+        state: restarted
+
