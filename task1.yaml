@@ -25,6 +25,6 @@
         name: {{ item }}
         state: restarted
         enabled: yes
-       with_item: 
+       with_items: 
          - apache2
          - mariadb
