@@ -53,3 +53,4 @@
       dest: "/home/{{ item.User }}/.ssh/authorized_keys"
     when: item.Pub_key | length > 0
     loop: "{{user_list.list}}"
+    
