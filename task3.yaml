@@ -11,11 +11,15 @@
 
     - name: Gather host information
       ansible.builtin.set_fact:
-        host_entries: "{{ host_entries | default([]) + [{'ip': hostvars[item].ansible_host | default(item), 'hostname': item}] }}"
+        host_entries: "{{ host_entries | default([]) + [{'ip': hostvars[item].ansible_default_ipv4.address | default(item), 'hostname': hostvars[item].inventory_hostname | default(item)}] }}"
       loop: "{{ ansible_play_hosts }}"
-      delegate_to: localhost
-      run_once: true # Gather host info once on the first host.
+      run_once: true  # Gather host info once on the first host.
 
+    - name: Debug gathered host information
+      ansible.builtin.debug:
+        msg: "{{ host_entries }}"
+      when: host_entries is not none
+      
     - name: Update /etc/hosts
       ansible.builtin.blockinfile:
         path: /etc/hosts
