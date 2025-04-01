@@ -13,6 +13,7 @@
       ansible.builtin.set_fact:
         host_entries: "{{ host_entries | default([]) + [{'ip': hostvars[item].ansible_host | default(item), 'hostname': item}] }}"
       loop: "{{ ansible_play_hosts }}"
+      delegate_to: localhost
       run_once: true # Gather host info once on the first host.
 
     - name: Update /etc/hosts
