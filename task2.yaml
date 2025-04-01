@@ -5,7 +5,7 @@
   tasks:
     - name: Reading from CSV file
       read_csv:
-        path: /HomeworkTask1/users.csv # Path to users.csv
+        path: /HomeworkAnsible/users.csv # Path to users.csv
       register: user_list
       delegate_to: localhost
 
