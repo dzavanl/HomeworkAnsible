@@ -1,3 +1,8 @@
+Install git on control host
+git clone address
+git config --global user.name "User Name"
+git config --global user.email "email"
+
 For second task check if read_csv module is installed
 It is not included in ansible-core. To check whether it is installed, run ansible-galaxy collection list.
 To install it, use: ansible-galaxy collection install community.general
