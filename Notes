@@ -2,7 +2,18 @@ Install git on control host
 git clone address
 git config --global user.name "User Name"
 git config --global user.email "email"
-
+git status - to show if there is something modified
+git diff
+git add file - to add file to git hub - make sure that we add this file to files that we are merging
+git commit -m "message"  - commiting changes to git hub with message
+git push origin main - to push it to git hub
 For second task check if read_csv module is installed
 It is not included in ansible-core. To check whether it is installed, run ansible-galaxy collection list.
 To install it, use: ansible-galaxy collection install community.general
+
+tu run and check playbook:
+sudo ansible-playbook test.yaml --syntax-check   - to check syntax of your yaml file
+sudo ansible-playbook test.yaml --check - to check if all is fine
+sudo ansible-playbook test.yaml --check -diff  - to check errors in define - difference
+
+sudo ansible-playbook test.yaml
