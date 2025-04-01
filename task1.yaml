@@ -1,5 +1,5 @@
 ---
-- name: My first playbook
+- name: Deploy LAMP stack on each server and single PHP page
   hosts: webservers # specify servers
   become: yes # use sudo privileges
   tasks:
