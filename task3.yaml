@@ -24,4 +24,5 @@
           {% for host in host_entries %}
           {{ host.ip }} {{ host.hostname }}
           {% endfor %}
+        state: present
         marker: "# {mark} ANSIBLE MANAGED HOSTS"
