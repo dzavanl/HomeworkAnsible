@@ -39,7 +39,7 @@
         append: true
       when: admin not in user_list[0]
 
-    - name: Lock accounts without RSA keys
+    - name: Lock accounts without RSA keys # sbin no login
       user: 
         name: "{{ item.User }}"
         state: "disable"
